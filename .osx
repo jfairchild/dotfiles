@@ -31,7 +31,6 @@ defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
 
 # Avoid creating .DS_Store files on network volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-
 # Disable Safari’s thumbnail cache for History and Top Sites
 defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
 
@@ -75,7 +74,6 @@ defaults write com.apple.iTunes hide-ping-dropdown -bool TRUE
 
 # Make iTunes window controls horizontal again
 defaults write com.apple.iTunes full-window -boolean YES
-
 
 # Kill affected applications
 for app in Safari Finder Dock Mail iTunes; do killall "$app"; done
