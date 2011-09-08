@@ -1,4 +1,4 @@
-# Mathias’s dotfiles
+# Nick’s dotfiles
 
 ## Installation
 
@@ -22,6 +22,7 @@ Suggestions/improvements
 [welcome](https://github.com/mathiasbynens/dotfiles/issues)!
 
 ## Thanks to…
+* [Mathias Bynens](http://mathiasbynens.be/) from whom I forked this repo
 * [Gianni Chiappetta](http://gf3.ca/) for sharing his [amazing collection of dotfiles](https://github.com/gf3/dotfiles)
 * [Matijs Brinkhuis](http://hotfusion.nl/) and his [homedir repository](https://github.com/matijs/homedir)
 * [Jan Moesen](http://jan.moesen.nu/) (who will hopefully take [his `.bash_profile`](https://gist.github.com/1156154) and make it into a full `dotfiles` repo some day)

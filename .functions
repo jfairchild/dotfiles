@@ -13,3 +13,9 @@ httpcompression() {
 digga() {
   dig +nocmd "$1" any +multiline +noall +answer
 }
+
+# View man page as PDF
+pman() {¬
+	VIEWER=""
+	man -t "${1}" | open -f -a /Applications/Skim.app¬
+}
