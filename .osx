@@ -1,9 +1,6 @@
 # Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
-# Enable the 2D Dock
-defaults write com.apple.dock no-glass -bool true
-
 # Disable menu bar transparency
 defaults write -g AppleEnableMenuBarTransparency -bool false
 
@@ -27,11 +24,6 @@ defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 # Disable window animations
 defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
-
-# Disable disk image verification
-defaults write com.apple.frameworks.diskimages skip-verify -bool true
-defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
-defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 
 # Automatically open a new Finder window when a volume is mounted
 defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
@@ -65,11 +57,25 @@ rm ~/Library/Application\ Support/Dock/*.db
 # Show the ~/Library folder
 chflags nohidden ~/Library
 
-# Disable local Time Machine backups
-sudo tmutil disablelocal
-
-# Kill affected applications
-for app in Safari Finder Dock Mail; do killall "$app"; done
-
 # Fix for the ancient UTF-8 bug in QuickLook (http://mths.be/bbo)
 echo "0x08000100:0" > ~/.CFUserTextEncoding
+
+# Show full path in Finder title bar
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES
+
+# Show the Dock on the top-left
+defaults write com.apple.dock pinning start
+defaults write com.apple.dock orientation left
+
+# Hide iTunes Store arrow links
+defaults write com.apple.iTunes show-store-arrow-links -bool FALSE
+
+# Hide iTunes Ping dropdown
+defaults write com.apple.iTunes hide-ping-dropdown -bool TRUE
+
+# Make iTunes window controls horizontal again
+defaults write com.apple.iTunes full-window -boolean YES
+
+
+# Kill affected applications
+for app in Safari Finder Dock Mail iTunes; do killall "$app"; done
