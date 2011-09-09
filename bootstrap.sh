@@ -1,4 +1,6 @@
 #!/bin/bash -eu
+#Potentially dangerous...
+GIT_SSL_NO_VERIFY=true
 DIR=$(dirname $0)
 cd $DIR
 git pull
