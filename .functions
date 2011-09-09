@@ -15,6 +15,17 @@ digga() {
 }
 
 # View man page as PDF
+# Try Skim, then Preview, then behave like plain old man if you can't find a PDF viewer
 pman() {
-	man -t "${1}" | open -f -a /Applications/Skim.app
+	if [[ -e "/Applications/Skim.app" ]]; then
+		PDFVIEWER="/Applications/Skim.app"
+	else if [[ -e "/Applications/Preview.app" ]]; then
+		PDFVIEWER="/Applications/Preview.app"
+	else
+		man "${1}"
+		exit
+	fi
+	fi
+
+	man -t "${1}" | open -f -a ${PDFVIEWER}
 }
