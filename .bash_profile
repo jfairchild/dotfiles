@@ -13,8 +13,7 @@ umask 0077
 
 # BashFAQ/088
 unset HISTFILESIZE
-HISTSIZE=10000
-PROMPT_COMMAND="history -a"
+HISTSIZE=50000
 export HISTSIZE PROMPT_COMMAND
 shopt -s histappend
 
