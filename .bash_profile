@@ -8,6 +8,9 @@ done
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
 
+# Don't overwrite existing files with shell redirection
+set -o noclobber
+
 # Set an overly paranoid umask
 umask 0077
 
@@ -18,6 +21,6 @@ export HISTSIZE PROMPT_COMMAND
 shopt -s histappend
 
 # Run keychain last so nothing else fails to run on fail or cancel
-[[ -x $(which keychain 2>&1 >/dev/null) ]] && \
+[[ -x $(which keychain 2>/dev/null) ]] && \
 	eval $(keychain --eval --quick --quiet --ignore-missing --nogui \
 	~/.ssh/nlopez-lyra)
