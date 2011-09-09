@@ -29,15 +29,22 @@ _ssh () {
 	cur=${COMP_WORDS[COMP_CWORD]}
 	prev=${COMP_WORDS[COMP_CWORD-1]}
 	opts="-l"
-	[[ -e ~/.ssh/config ]] && hosts="$(sed -n -E 's/^Host(Name)?[[:space:]]+(.*)$/\2/p' ~/.ssh/config)"
+	if [[ -e ~/.ssh/config ]] ; then
+		hosts="$(sed -n -E 's/^Host(Name)?[[:space:]]+(.*)$/\2/p' ~/.ssh/config)"
+		users="${users} $(sed -n -E 's/^User[[:space:]]+(.*)$/\1/p' ~/.ssh/config)"
+	fi
+	if [[ -e ~/.bash_history ]] ; then
+		users="$(sed -n -E 's/^ssh.*[[:space:]]+(.*)?(.*)@(.*)$/\1/p' ~/.bash_history)"
+	fi
 
-	if [[ $cur == -* || ${COMP_CWORD} -eq 1 ]] ; then
+	if [[ ${COMP_CWORD} -eq 1 ]] ; then
 		COMPREPLY=( $(compgen -W "${hosts}" -- ${cur}) )
-		return 0
 	fi
 
 	case "${prev}" in
-		# ...
+		-l)
+			COMPREPLY=( $(compgen -W "${users}" -- ${cur}) )
+		;;
 	esac
 }
 # Associate the _ssh_config function with the ssh command completion
