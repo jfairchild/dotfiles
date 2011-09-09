@@ -40,13 +40,15 @@ _ssh () {
 		users="${users} $(sed -n 's/^ssh[.	 ]*\([a-zA-Z0-9]*\)@\(.*\)$/\1/p' ~/.bash_history)"
 	fi
 
-	if [[ ${COMP_CWORD} -eq 1 ]] ; then
-		COMPREPLY=( $(compgen -W "${hosts}" -- ${cur}) )
-	fi
+	#if [[ ${COMP_CWORD} -eq 1 ]] ; then
+	#fi
 
 	case "${prev}" in
 		-l)
 			COMPREPLY=( $(compgen -W "${users}" -- ${cur}) )
+		;;
+		*)
+			COMPREPLY=( $(compgen -W "${hosts}" -- ${cur}) )
 		;;
 	esac
 }
