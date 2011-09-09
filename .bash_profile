@@ -20,6 +20,15 @@ HISTSIZE=50000
 export HISTSIZE PROMPT_COMMAND
 shopt -s histappend
 
+if [[ -e ~/.ssh/config ]]; then
+	complete -r ssh
+	_ssh_config () {
+		local cur=${COMP_WORDS[COMP_CWORD]}
+		COMPREPLY=($(compgen -W "$(sed -n -E 's/^Host(Name)?[[:space:]]+(.*)$/\2/p' ~/.ssh/config)" -- $cur))
+	}
+	fi
+complete -F _ssh_config ssh
+
 # Run keychain last so nothing else fails to run on fail or cancel
 [[ -x $(which keychain 2>/dev/null) ]] && \
 	eval $(keychain --eval --quick --quiet --ignore-missing --nogui \
