@@ -51,8 +51,6 @@ vnoremap / /\v
 set showmatch
 set matchtime=0
 
-set cursorline
-
 nnoremap <leader><space> :noh<cr>
 nnoremap <leader>n :NERDTreeToggle<cr>
 nnoremap <tab> %
@@ -88,3 +86,6 @@ augroup END
 highlight BadWhitespace term=standout ctermbg=red guibg=red
 match BadWhitespace /[^* \t]\zs\s\+$\| \+\ze\t/
 autocmd BufWritePre * :%s/\s\+$//e
+
+set relativenumber
+nnoremap <F2> :set norelativenumber!<CR>
