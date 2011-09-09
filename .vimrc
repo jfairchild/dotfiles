@@ -86,6 +86,3 @@ augroup END
 highlight BadWhitespace term=standout ctermbg=red guibg=red
 match BadWhitespace /[^* \t]\zs\s\+$\| \+\ze\t/
 autocmd BufWritePre * :%s/\s\+$//e
-
-set relativenumber
-nnoremap <F2> :set norelativenumber!<CR>
