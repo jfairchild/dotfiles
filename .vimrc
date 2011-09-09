@@ -3,7 +3,7 @@ filetype plugin indent on
 
 syntax on
 set background=dark
-colorscheme=solarized
+colorscheme default
 
 set nocompatible
 
