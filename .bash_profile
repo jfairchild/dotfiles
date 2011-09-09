@@ -24,12 +24,12 @@ if [[ -e ~/.ssh/config ]]; then
 	# Remove any existing completions for ssh
 	complete -r ssh
 	# Complete hosts based on Host and HostName lines in ~/.ssh/config
-	_ssh_config () {
+	_ssh () {
 		local cur=${COMP_WORDS[COMP_CWORD]}
 		COMPREPLY=($(compgen -W "$(sed -n -E 's/^Host(Name)?[[:space:]]+(.*)$/\2/p' ~/.ssh/config)" -- $cur))
 	}
 	# Associate the _ssh_config function with the ssh command completion
-	complete -F _ssh_config ssh
+	complete -F _ssh ssh
 fi
 
 # Run keychain last so we can cancel it safely
