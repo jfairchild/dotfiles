@@ -25,8 +25,20 @@ if [[ -e ~/.ssh/config ]]; then
 	complete -r ssh
 	# Complete hosts based on Host and HostName lines in ~/.ssh/config
 	_ssh () {
-		local cur=${COMP_WORDS[COMP_CWORD]}
-		COMPREPLY=($(compgen -W "$(sed -n -E 's/^Host(Name)?[[:space:]]+(.*)$/\2/p' ~/.ssh/config)" -- $cur))
+		local cur prev opts
+		COMPREPLY=()
+		cur=${COMP_WORDS[COMP_CWORD]}
+		prev=${COMP_WORDS[COMP_CWORD-1]}
+		opts=""
+
+		if [[ $cur} == -* || ${COMP_CWORD} -eq 1 ]] ; then
+			COMPREPLY=( $(compgen -W "$(sed -n -E 's/^Host(Name)?[[:space:]]+(.*)$/\2/p' ~/.ssh/config)" -- $cur) )
+			return 0
+		fi
+
+		case "${prev}" in
+			# ...
+		esac
 	}
 	# Associate the _ssh_config function with the ssh command completion
 	complete -F _ssh ssh
