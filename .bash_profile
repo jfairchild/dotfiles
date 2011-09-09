@@ -11,6 +11,13 @@ shopt -s nocaseglob
 # Set an overly paranoid umask
 umask 0077
 
+# BashFAQ/088
+unset HISTFILESIZE
+HISTSIZE=10000
+PROMPT_COMMAND="history -a"
+export HISTSIZE PROMPT_COMMAND
+shopt -s histappend
+
 # Run keychain last so nothing else fails to run on fail or cancel
 eval $(keychain --eval --quick --quiet --ignore-missing --nogui \
 	~/.ssh/nlopez-lyra)
