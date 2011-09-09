@@ -23,4 +23,4 @@ shopt -s histappend
 # Run keychain last so nothing else fails to run on fail or cancel
 [[ -x $(which keychain 2>/dev/null) ]] && \
 	eval $(keychain --eval --quick --quiet --ignore-missing --nogui \
-	~/.ssh/nlopez-lyra)
+	$(find ~/.ssh -name "*.pub" -print0 | xargs -0 printf "%s\n" | sed -e 's/\.pub//g'))
