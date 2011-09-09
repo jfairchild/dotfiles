@@ -20,29 +20,28 @@ HISTSIZE=50000
 export HISTSIZE PROMPT_COMMAND
 shopt -s histappend
 
-if [[ -e ~/.ssh/config ]]; then
-	# Remove any existing completions for ssh
-	complete -r ssh
-	# Complete hosts based on Host and HostName lines in ~/.ssh/config
-	_ssh () {
-		local cur prev opts
-		COMPREPLY=()
-		cur=${COMP_WORDS[COMP_CWORD]}
-		prev=${COMP_WORDS[COMP_CWORD-1]}
-		opts=""
+# Remove any existing completions for ssh
+complete -r ssh
+# Complete hosts based on Host and HostName lines in ~/.ssh/config
+_ssh () {
+	local cur prev opts
+	COMPREPLY=()
+	cur=${COMP_WORDS[COMP_CWORD]}
+	prev=${COMP_WORDS[COMP_CWORD-1]}
+	opts="-l"
+	[[ -e ~/.ssh/config ]] && hosts="$(sed -n -E 's/^Host(Name)?[[:space:]]+(.*)$/\2/p' ~/.ssh/config)"
 
-		if [[ $cur} == -* || ${COMP_CWORD} -eq 1 ]] ; then
-			COMPREPLY=( $(compgen -W "$(sed -n -E 's/^Host(Name)?[[:space:]]+(.*)$/\2/p' ~/.ssh/config)" -- $cur) )
-			return 0
-		fi
+	if [[ $cur == -* || ${COMP_CWORD} -eq 1 ]] ; then
+		COMPREPLY=( $(compgen -W "${hosts}" -- ${cur}) )
+		return 0
+	fi
 
-		case "${prev}" in
-			# ...
-		esac
-	}
-	# Associate the _ssh_config function with the ssh command completion
-	complete -F _ssh ssh
-fi
+	case "${prev}" in
+		# ...
+	esac
+}
+# Associate the _ssh_config function with the ssh command completion
+complete -F _ssh ssh
 
 # Run keychain last so we can cancel it safely
 [[ -x $(which keychain 2>/dev/null) ]] && \
