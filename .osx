@@ -64,8 +64,11 @@ echo "0x08000100:0" > ~/.CFUserTextEncoding
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES
 
 # Show the Dock on the top-left
-defaults write com.apple.dock pinning start
-defaults write com.apple.dock orientation left
+#defaults write com.apple.dock pinning start
+#defaults write com.apple.dock orientation left
+
+# Use "suck" minimization effect
+defaults write com.apple.dock mineffect suck
 
 # Hide iTunes Store arrow links
 defaults write com.apple.iTunes show-store-arrow-links -bool FALSE
