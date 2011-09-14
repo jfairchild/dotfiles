@@ -5,6 +5,3 @@ export MANPAGER="less -X"
 
 # Colorize BSD ls
 export CLICOLOR=1
-
-# for MacPorts
-export PATH="/opt/local/bin:/opt/local/sbin:${PATH}"
