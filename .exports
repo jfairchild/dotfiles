@@ -7,4 +7,4 @@ export MANPAGER="less -X"
 export CLICOLOR=1
 
 # for MacPorts
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+export PATH="$PATH:/opt/local/bin:/opt/local/sbin"
