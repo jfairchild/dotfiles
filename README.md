@@ -3,7 +3,7 @@
 ## Installation
 
 ```bash
-git clone https://github.com/thalweg/dotfiles.git && cd dotfiles && ./bootstrap.sh
+git clone https://github.com/thalweg/dotfiles.git && cd dotfiles && git submodule init && git submodule update && ./bootstrap.sh
 ```
 
 When setting up a new Mac, you may want to set some sensible OS X defaults:
