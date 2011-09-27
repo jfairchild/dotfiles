@@ -80,4 +80,4 @@ defaults write com.apple.iTunes hide-ping-dropdown -bool TRUE
 defaults write com.apple.iTunes full-window -boolean YES
 
 # Kill affected applications
-for app in Safari Finder Dock Mail iTunes; do killall "$app"; done
+for app in Safari Finder Dock Mail iTunes SystemUIServer; do killall "$app"; done
