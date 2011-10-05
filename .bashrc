@@ -55,7 +55,12 @@ _ssh () {
 # Associate the _ssh_config function with the ssh command completion
 complete -F _ssh ssh
 
+# rbenv it up if we have it
+[[ -x $(which rbenv 2>/dev/null) ]] && \
+	eval "`rbenv init -`"
+
 # Run keychain last so we can cancel it safely
 [[ -x $(which keychain 2>/dev/null) ]] && \
 	eval $(keychain --eval --quick --quiet --ignore-missing --nogui \
 	$(find ~/.ssh -name "*.pub" -print0 | xargs -0 printf "%s\n" | sed -e 's/\.pub//g'))
+
