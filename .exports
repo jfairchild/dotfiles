@@ -5,5 +5,3 @@ export MANPAGER="less -X"
 
 # Colorize BSD ls
 export CLICOLOR=1
-
-if [[ -e ~/.exports_aws ]]; then source ~/.exports_aws; fi
