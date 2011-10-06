@@ -1,6 +1,10 @@
 # Colorize ls if we have GNU coreutils
 ls --color=auto >/dev/null 2>&1
-if [[ $? ]]; then alias ls="ls --color=auto"; fi
+if (( $? == 0)); then
+	alias ls="ls --color=auto";
+else
+	unalias ls >/dev/null 2>&1
+fi
 
 # Easier navigation: .., ..., ~ and -
 alias .="pwd"
