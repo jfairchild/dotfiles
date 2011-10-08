@@ -1,6 +1,6 @@
 # Load ~/.bash_prompt, ~/.exports, ~/.aliases, ~/.functions and ~/.extra
 # ~/.extra can be used for settings you don’t want to commit
-for file in extra bash_prompt exports aliases functions ; do
+for file in extra bash_prompt exports aliases functions; do
   file="$HOME/.$file"
   [ -e "$file" ] && source "$file"
 done
@@ -60,7 +60,7 @@ complete -F _ssh ssh
 	eval "`rbenv init -`"
 
 # Run keychain last so we can cancel it safely
-[[ -x $(which keychain 2>/dev/null) ]] && \
+[[ -x $(which keychain 2>/dev/null) && -d ~/.ssh ]] && \
 	eval $(keychain --eval --quick --quiet --ignore-missing --nogui \
 	$(find ~/.ssh -name "*.pub" -print0 | xargs -0 printf "%s\n" | sed -e 's/\.pub//g'))
 
