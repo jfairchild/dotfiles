@@ -19,6 +19,7 @@ unset HISTFILESIZE
 HISTSIZE=50000
 export HISTSIZE PROMPT_COMMAND
 shopt -s histappend
+export HISTCONTROL=ignoreboth
 
 # Remove any existing completions for ssh
 complete -r ssh
