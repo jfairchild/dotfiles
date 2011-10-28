@@ -61,6 +61,5 @@ complete -F _ssh ssh
 
 # Run keychain last so we can cancel it safely
 [[ -x $(which keychain 2>/dev/null) && -d ~/.ssh ]] && \
-	eval $(keychain --eval --quick --quiet --ignore-missing --nogui \
+	eval $(keychain --eval --quick --quiet --ignore-missing --nogui --nocolor --lockwait 1 \
 	$(find ~/.ssh -name "*.pub" -print0 | xargs -0 printf "%s\n" | sed -e 's/\.pub//g'))
-
