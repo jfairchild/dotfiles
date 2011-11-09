@@ -35,3 +35,7 @@ airportcycle() {
 	networksetup -setairportpower $wifi off
 	networksetup -setairportpower $wifi on
 }
+
+ql() {
+	qlmanage -p "$@" >& /dev/null &
+}
