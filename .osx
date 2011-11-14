@@ -39,7 +39,10 @@ defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
 defaults write com.apple.Safari IncludeDebugMenu -bool true
 
 # Remove useless icons from Safari’s bookmarks bar
-defaults write com.apple.Safari ProxiesInBookmarksBar "()"
+#defaults write com.apple.Safari ProxiesInBookmarksBar "()"
+
+# Enable Safari Debug menu
+defaults write com.apple.Safari IncludeInternalDebugMenu 1
 
 # Disable send and reply animations in Mail.app
 defaults write com.apple.Mail DisableReplyAnimations -bool true
