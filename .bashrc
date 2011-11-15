@@ -21,41 +21,6 @@ export HISTSIZE PROMPT_COMMAND
 shopt -s histappend
 export HISTCONTROL="ignorespace:erasedups"
 
-# Remove any existing completions for ssh
-complete -r ssh
-# Complete hosts based on Host and HostName lines in ~/.ssh/config
-_ssh () {
-	local cur prev opts
-	COMPREPLY=()
-	cur=${COMP_WORDS[COMP_CWORD]}
-	prev=${COMP_WORDS[COMP_CWORD-1]}
-	opts="-l"
-	if [[ -e ~/.ssh/config ]] ; then
-		#hosts="$(sed -n -E 's/^Host(Name)?[[:space:]]+(.*)$/\2/p' ~/.ssh/config)"
-		#users="${users} $(sed -n -E 's/^User[[:space:]]+(.*)$/\1/p' ~/.ssh/config)"
-		hosts="$(sed -n 's/^Host[Name]*[	 ]*\(.*\)$/\1/p' ~/.ssh/config)"
-		users="$(sed -n 's/^User*[	 ]*\(.*\)$/\1/p' ~/.ssh/config)"
-	fi
-	if [[ -e ~/.bash_history ]] ; then
-		#users="$(sed -n -E 's/^ssh.*[[:space:]]+(.*)?(.*)@(.*)$/\1/p' ~/.bash_history)"
-		users="${users} $(sed -n 's/^ssh[.	 ]*\([a-zA-Z0-9]*\)@\(.*\)$/\1/p' ~/.bash_history)"
-	fi
-
-	#if [[ ${COMP_CWORD} -eq 1 ]] ; then
-	#fi
-
-	case "${prev}" in
-		-l)
-			COMPREPLY=( $(compgen -W "${users}" -- ${cur}) )
-		;;
-		*)
-			COMPREPLY=( $(compgen -W "${hosts}" -- ${cur}) )
-		;;
-	esac
-}
-# Associate the _ssh_config function with the ssh command completion
-complete -F _ssh ssh
-
 # rbenv it up if we have it
 [[ -x $(which rbenv 2>/dev/null) ]] && \
 	eval "`rbenv init -`"
