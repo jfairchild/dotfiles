@@ -5,3 +5,7 @@ export MANPAGER="less -X"
 
 # Colorize BSD ls
 export CLICOLOR=1
+
+# git-completion options
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWUNTRACKED_FILES=1
