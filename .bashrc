@@ -11,9 +11,6 @@ shopt -s nocaseglob
 # Don't overwrite existing files with shell redirection
 set -o noclobber
 
-# Set an overly paranoid umask
-umask 0077
-
 # BashFAQ/088
 unset HISTFILESIZE
 HISTSIZE=50000
