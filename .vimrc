@@ -7,7 +7,12 @@ colorscheme default
 
 set nocompatible
 
-set number
+if exists("&relativenumber")
+	set relativenumber
+else
+	set number
+endif
+
 set ruler
 
 "Set encoding
@@ -16,12 +21,12 @@ set encoding=utf-8
 "Disable modelines
 set modelines=0
 
-"Whitespace stuff
+"Whitespace
 set nowrap
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set noexpandtab
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
 set list listchars=tab:▸\ ,eol:¬
 
 "Searching
