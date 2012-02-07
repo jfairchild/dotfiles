@@ -82,5 +82,8 @@ defaults write com.apple.iTunes hide-ping-dropdown -bool TRUE
 # Make iTunes window controls horizontal again
 defaults write com.apple.iTunes full-window -boolean YES
 
+# Make Dock icons translucent for hiddens apps
+defaults write com.apple.Dock showhidden -bool YES
+
 # Kill affected applications
 for app in Safari Finder Dock Mail iTunes SystemUIServer; do killall "$app"; done
