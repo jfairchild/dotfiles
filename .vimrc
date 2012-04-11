@@ -2,8 +2,10 @@ call pathogen#infect()
 filetype plugin indent on
 
 syntax on
-set background=dark
 colorscheme default
+set background=dark
+
+set t_Co=256
 
 set nocompatible
 
