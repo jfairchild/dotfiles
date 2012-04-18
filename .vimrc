@@ -89,6 +89,8 @@ augroup myvimrchooks
 	autocmd bufwritepost .vimrc source ~/.vimrc
 augroup END
 
+au FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
+
 " Flag problematic whitespace (trailing spaces, spaces before tabs).
 highlight BadWhitespace term=standout ctermbg=red guibg=red
 match BadWhitespace /[^* \t]\zs\s\+$\| \+\ze\t/
