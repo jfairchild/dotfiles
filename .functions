@@ -39,3 +39,21 @@ airportcycle() {
 ql() {
 	qlmanage -p "$@" >& /dev/null &
 }
+
+resolver() {
+  case "$#" in
+    0) while read message; do perl -MSocket -pe 's/(\d+\.\d+\.\d+\.\d+)/gethostbyaddr(inet_aton($1), AF_INET)/ge'; done;;
+    *) perl -MSocket -pe 's/(\d+\.\d+\.\d+\.\d+)/gethostbyaddr(inet_aton($1), AF_INET)/ge'  "$1";;
+  esac
+}
+
+bug() {
+  open "https://fb.wgen.net/?$1"
+}
+
+digttl() {
+  query="$1"
+  authority=`dig +short ns "$query" | head -n1`
+  ttl=`dig +nocmd +noall +answer "$query" @"$authority" | head -n1`
+  echo "$ttl" | awk '{print $2}'
+}
