@@ -53,7 +53,8 @@ bug() {
 
 digttl() {
   query="$1"
-  authority=`dig +short ns "$query" | head -n1`
+  domain="$(echo "$query" | awk -F. '{print $(NF-1) "." $NF}')"
+  authority=`dig +short ns "$domain" | head -n1`
   ttl=`dig +nocmd +noall +answer "$query" @"$authority" | head -n1`
   echo "$ttl" | awk '{print $2}'
 }
