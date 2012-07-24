@@ -2,8 +2,10 @@ call pathogen#infect()
 filetype plugin indent on
 
 syntax on
-set background=dark
 colorscheme default
+set background=dark
+
+set t_Co=256
 
 set nocompatible
 
@@ -27,7 +29,7 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab
-set list listchars=tab:▸\ ,eol:¬
+"set list listchars=tab:▸\ ,eol:¬
 
 "Searching
 set hlsearch
@@ -86,6 +88,8 @@ augroup myvimrchooks
 	au!
 	autocmd bufwritepost .vimrc source ~/.vimrc
 augroup END
+
+au FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
 
 " Flag problematic whitespace (trailing spaces, spaces before tabs).
 highlight BadWhitespace term=standout ctermbg=red guibg=red
