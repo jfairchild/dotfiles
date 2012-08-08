@@ -1,6 +1,7 @@
 [core]
   excludesfile = ~/.gitignore
   attributesfile = ~/.gitattributes
+	autocrlf = input
 [color]
   ui = auto
 [color "branch"]
@@ -32,3 +33,8 @@
   insteadOf = "gist:"
 [alias]
 	review = !git push origin HEAD:refs/for/`git rev-parse --abbrev-ref HEAD`
+	d = difftool
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
