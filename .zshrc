@@ -36,7 +36,7 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 export JAVA_HOME="$(/usr/libexec/java_home)"
 export EC2_HOME="/usr/local/Library/LinkedKegs/ec2-api-tools/jars"
-export ANDROID_SDK_ROOT=/usr/local/Cellar/android-sdk/r20.0.1
+export ANDROID_SDK_ROOT="/usr/local/Cellar/android-sdk/r20.0.1"
 export PATH="${HOME}/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools"
 export PYTHONPATH="${HOME}/Library/Python/2.7/site-packages:${PYTHONPATH}"
 export BCFG2_BIN_DIR="${HOME}/bin"

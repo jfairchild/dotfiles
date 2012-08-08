@@ -1,0 +1,3 @@
+#!/bin/sh
+TMUX="$(which tmux)"
+"$TMUX" attach-session -t 0 || $"TMUX"
