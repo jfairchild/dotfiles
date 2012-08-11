@@ -59,3 +59,7 @@ digttl() {
   ttl="$(dig +nocmd +noall +answer "$query" @"$authority" | head -n1)"
   echo "$ttl" | awk '{print $2}'
 }
+
+apkname() {
+    aapt dump badging "$1" | awk -F\' '/^package/ {print $2}'
+}
