@@ -43,3 +43,5 @@ export BCFG2_BIN_DIR="${HOME}/bin"
 export IN_WGEN_ENV_PATH="${HOME}/bin/in_wgen_env"
 
 eval "$(rbenv init -)"
+
+source "${HOME}/.functions"
