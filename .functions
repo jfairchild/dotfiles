@@ -55,6 +55,9 @@ digttl() {
   echo "$ttl" | awk '{print $2}'
 }
 
-apkname() {
-    aapt dump badging "$1" | awk -F\' '/^package/ {print $2}'
-}
+#apkname() {
+    #output="$(aapt dump badging "$1")"
+    #aapt_return=$?
+    #awk -F\' '/^package/ {print $2}' <(echo "$output")
+    #return $aapt_return
+#}

@@ -2,7 +2,7 @@ call pathogen#infect()
 filetype plugin indent on
 
 syntax on
-colorscheme default
+colorscheme molokai
 set background=dark
 
 set t_Co=256
@@ -24,10 +24,9 @@ set encoding=utf-8
 set modelines=0
 
 "Whitespace
-set nowrap
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set expandtab
 "set list listchars=tab:▸\ ,eol:¬
 
@@ -41,16 +40,18 @@ set smartcase
 set wildmenu
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
-
 set scrolloff=3
 set autoindent
 set showmode
 set showcmd
 set hidden
 set visualbell
+set cursorline
 set ttyfast
+set ruler
 set backspace=indent,eol,start
 set laststatus=2
+set undofile
 let mapleader = ","
 nnoremap / /\v
 vnoremap / /\v
@@ -62,7 +63,6 @@ nnoremap <leader><space> :noh<cr>
 nnoremap <leader>n :NERDTreeToggle<cr>
 nnoremap <tab> %
 vnoremap <tab> %
-set formatoptions=qrn2
 nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
@@ -95,3 +95,13 @@ au FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
 highlight BadWhitespace term=standout ctermbg=red guibg=red
 match BadWhitespace /[^* \t]\zs\s\+$\| \+\ze\t/
 autocmd BufWritePre * :%s/\s\+$//e
+
+"Makes Vim handle long lines correctly
+set wrap
+set textwidth=80
+set formatoptions=qrn1
+set colorcolumn=80
+
+"MacVim options
+set guifont=Monaco:h14
+set guioptions-=rL
