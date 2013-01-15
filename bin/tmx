@@ -1,3 +1,5 @@
 #!/bin/sh
+export TZ=UTC
+REATTACH="/usr/local/bin/reattach-to-user-namespace"
 TMUX="/usr/local/bin/tmux"
-"$TMUX" attach-session -t 0 || "$TMUX"
+"$REATTACH" "$TMUX" attach-session -t 0 || "$REATTACH" "$TMUX"
