@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="simple"
+ZSH_THEME="gallois"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -25,7 +25,7 @@ COMPLETION_WAITING_DOTS="false"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git rvm osx knife vagrant)
+plugins=(git osx knife vagrant rbenv gem brew bundler)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -40,7 +40,7 @@ PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
 PATH=$PATH:$(brew --prefix coreutils)/libexec/gnubin
 PATH=$PATH:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform_tools
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=/usr/local/share/npm/bin:$PATH
 PYTHONPATH="${HOME}/Library/Python/2.7/site-packages:${PYTHONPATH}"
 HISTSIZE=1000000
 SAVEHIST=1000000
@@ -50,7 +50,6 @@ EDITOR=vim
 eval `dircolors ~/.dircolors`
 eval `perl -I ~/perl5/lib/perl5 -Mlocal::lib`
 source "${HOME}/.functions"
-source "${HOME}/.rvm/scripts/rvm"
 if [ -e "${HOME}/.aws_export" ]; then source "${HOME}/.aws_export"; fi
 
 # Aliases
