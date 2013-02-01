@@ -25,7 +25,7 @@ COMPLETION_WAITING_DOTS="false"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git osx knife vagrant rbenv gem brew bundler)
+plugins=(git osx knife vagrant rbenv gem brew bundler ruby)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -45,7 +45,7 @@ PYTHONPATH="${HOME}/Library/Python/2.7/site-packages:${PYTHONPATH}"
 HISTSIZE=1000000
 SAVEHIST=1000000
 TZ="$(readlink /etc/localtime)"
-EDITOR=vim
+export EDITOR=vim
 
 eval `dircolors ~/.dircolors`
 eval `perl -I ~/perl5/lib/perl5 -Mlocal::lib`
@@ -59,7 +59,4 @@ alias sudo="nocorrect sudo"
 alias ls="ls --color=auto"
 alias rdesktop="rdesktop -g 1280x800 -P -r disk:tmp=/tmp -r sound:off"
 alias mvim="reattach-to-user-namespace mvim"
-alias knife="nocorrect knife"
-alias pbcopy="reattach-to-user-namespace pbcopy"
-alias pbpaste="reattach-to-user-namespace pbpaste"
 alias aws="aws --region $AWS_DEFAULT_REGION"
