@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# A simple wrapper for validating locally-stored CloudFormation templates
+# Requires aws-cli <https://github.com/aws/aws-cli>
+usage(){
+  echo "$(basename $0) <cfn.json>"
+}
+validate(){
+  aws cloudformation validate-template --template-body "$(cat "$1")"
+}
+
+if (( $# != 1 )); then
+  usage
+  exit 1
+fi
+
+if [[ -f "$1" && -r "$1" ]]; then
+  validate "$1"
+  exit $?
+else
+  echo "$1 does not exist or is not readable"
+  exit 1
+fi
