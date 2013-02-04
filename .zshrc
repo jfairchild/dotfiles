@@ -49,8 +49,11 @@ export EDITOR=vim
 
 eval `dircolors ~/.dircolors`
 eval `perl -I ~/perl5/lib/perl5 -Mlocal::lib`
-source "${HOME}/.functions"
-if [ -e "${HOME}/.aws_export" ]; then source "${HOME}/.aws_export"; fi
+source "${HOME}/.functions" >/dev/null 2>&1
+# AWS credentials (for aws-cli, knife, boto, etc.)
+source "${HOME}/.aws_export" >/dev/null 2>&1
+# aws-completions
+source "$(brew --prefix)/bin/zsh_complete.sh" >/dev/null 2>&1
 
 # Aliases
 alias zshconfig="$EDITOR ~/.zshrc"
@@ -59,4 +62,11 @@ alias sudo="nocorrect sudo"
 alias ls="ls --color=auto"
 alias rdesktop="rdesktop -g 1280x800 -P -r disk:tmp=/tmp -r sound:off"
 alias mvim="reattach-to-user-namespace mvim"
-alias aws="aws --region $AWS_DEFAULT_REGION"
+
+# Bundler aliases
+alias b="bundle"
+alias bi="b install --path vendor"
+alias bil="bi --local"
+alias bu="b update"
+alias be="b exec"
+alias binit="bi && b package && echo 'vendor/ruby' >> .gitignore"
