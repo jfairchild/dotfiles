@@ -15,9 +15,11 @@ Bundle "gmarik/vundle"
 
 " My bundles
 Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rails'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'mileszs/ack.vim'
 
 filetype plugin indent on " required!
 
@@ -115,7 +117,7 @@ set formatoptions=qrn1
 set colorcolumn=80
 
 "MacVim options
-set guifont=Anonymous\ Pro:h18
+set guifont=PragmataPro:h18
 set guioptions-=rL
 
 " Save your backups to a less annoying place than the current directory.
@@ -159,3 +161,7 @@ if exists("+undofile")
 endif
 
 set autoread
+
+map <F1> :set invrelativenumber<CR>
+" nerdtree shortcut
+map <F2> :NERDTreeToggle<CR>
