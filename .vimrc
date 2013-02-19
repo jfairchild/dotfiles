@@ -17,6 +17,7 @@ Bundle "gmarik/vundle"
 Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
+Bundle 'altercation/vim-colors-solarized'
 
 filetype plugin indent on " required!
 
