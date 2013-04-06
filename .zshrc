@@ -25,9 +25,10 @@ COMPLETION_WAITING_DOTS="false"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git osx knife vagrant rbenv gem brew bundler ruby)
+plugins=(git osx vagrant rbenv gem brew bundler ruby pip knife screen)
 
 source $ZSH/oh-my-zsh.sh
+unsetopt correct_all
 
 # Environment variable extravaganza
 JAVA_HOME="$(/usr/libexec/java_home)"
@@ -35,9 +36,6 @@ EC2_HOME="/usr/local/Library/LinkedKegs/ec2-api-tools/jars"
 ANDROID_SDK_ROOT="/usr/local/Cellar/android-sdk/r20.0.1"
 PATH=$PATH:$HOME/bin
 PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-# Use GNU coreutils with their normal names
-PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
-MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
 PATH=$PATH:$(brew --prefix coreutils)/libexec/gnubin
 PATH=$PATH:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform_tools
 PATH=/usr/local/share/npm/bin:$PATH
@@ -45,7 +43,11 @@ PYTHONPATH="${HOME}/Library/Python/2.7/site-packages:${PYTHONPATH}"
 HISTSIZE=1000000
 SAVEHIST=1000000
 TZ="$(readlink /etc/localtime)"
-export EDITOR=vim
+export EDITOR="reattach-to-user-namespace subl --wait"
+export JAVA_HOME="$(/usr/libexec/java_home)"
+export AWS_CLOUDFORMATION_HOME="/usr/local/Library/LinkedKegs/aws-cfn-tools/jars"
+export LESS="-R"
+export LESSOPEN="|lesspipe.sh %s"
 
 eval `dircolors ~/.dircolors`
 eval `perl -I ~/perl5/lib/perl5 -Mlocal::lib`
@@ -53,15 +55,14 @@ source "${HOME}/.functions" >/dev/null 2>&1
 # AWS credentials (for aws-cli, knife, boto, etc.)
 source "${HOME}/.aws_export" >/dev/null 2>&1
 # aws-completions
-source "$(brew --prefix)/bin/zsh_complete.sh" >/dev/null 2>&1
+source "/usr/local/bin/zsh_complete.sh" >/dev/null 2>&1
 
 # Aliases
 alias zshconfig="$EDITOR ~/.zshrc"
 alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
 alias sudo="nocorrect sudo"
-alias ls="ls --color=auto"
+alias ls="gls --color=auto"
 alias rdesktop="rdesktop -g 1280x800 -P -r disk:tmp=/tmp -r sound:off"
-alias mvim="reattach-to-user-namespace mvim"
 
 # Bundler aliases
 alias b="bundle"
@@ -70,3 +71,5 @@ alias bil="bi --local"
 alias bu="b update"
 alias be="b exec"
 alias binit="bi && b package && echo 'vendor/ruby' >> .gitignore"
+
+#eval $(keychain --eval --agents ssh -Q --quiet ~/.ssh/id_ecdsa ~/.ssh/id_rsa)
