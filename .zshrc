@@ -73,3 +73,7 @@ alias be="b exec"
 alias binit="bi && b package && echo 'vendor/ruby' >> .gitignore"
 
 #eval $(keychain --eval --agents ssh -Q --quiet ~/.ssh/id_ecdsa ~/.ssh/id_rsa)
+
+autoload edit-command-line
+zle -N edit-command-line
+bindkey '^Xe' edit-command-line
