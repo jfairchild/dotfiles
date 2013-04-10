@@ -77,3 +77,5 @@ alias binit="bi && b package && echo 'vendor/ruby' >> .gitignore"
 autoload edit-command-line
 zle -N edit-command-line
 bindkey '^Xe' edit-command-line
+
+alias gsu="git submodule update --init"

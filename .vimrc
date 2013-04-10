@@ -165,3 +165,5 @@ set autoread
 map <F1> :set invrelativenumber<CR>
 " nerdtree shortcut
 map <F2> :NERDTreeToggle<CR>
+
+:au BufAdd,BufNewFile * nested tab sball
