@@ -31,3 +31,10 @@ bind  down:${hyper} focus down
 bind  left:${hyper} focus left
 bind right:${hyper} focus right
 
+# Window Hints
+bind tab:${hyper} hint
+config windowHintsIgnoreHiddenWindows false
+config windowHintsSpread true
+config windowHintsShowIcons true
+
+bind f5:${hyper} relaunch

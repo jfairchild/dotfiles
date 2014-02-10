@@ -2,6 +2,7 @@
   excludesfile = ~/.gitignore
   attributesfile = ~/.gitattributes
 	autocrlf = input
+	precomposeunicode = true
 [color]
   ui = auto
 [color "branch"]
@@ -30,6 +31,9 @@
 [url "git://gist.github.com/"]
   insteadOf = gist:
 [alias]
+# assumes git.git clone at ~/src/git
+diff-highlight = "!f() { git diff \"$@\" | ~/src/git/contrib/diff-highlight/diff-highlight; }; f"
+
 	review = !git push origin HEAD:refs/for/`git rev-parse --abbrev-ref HEAD`
 	d = difftool
   pu = "!git fetch origin -v; git fetch upstream -v; git merge upstream/master"
@@ -37,5 +41,21 @@
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   glog = log --pretty=format:"[%h] %ae, %ar: %s" --stat
 	semtag = !git tag -a $(semver tag) -m \"tagging $(semver tag)\"
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [push]
 	default = matching
+[user]
+	name = Nick Lopez
+	email = nlopez@amplify.com
+[diff]
+    tool = diffmerge
+[merge]
+    tool = diffmerge
+[difftool]
+    prompt = false
+[difftool "diffmerge"]
+    cmd = '/Applications/DiffMerge.app/Contents/Resources/diffmerge.sh' -u "$LOCAL" "$REMOTE"
+[mergetool "diffmerge"]
+    cmd = '/Applications/DiffMerge.app/Contents/Resources/diffmerge.sh' -merge -result="$PWD/$MERGED" "$PWD/$LOCAL" "$PWD/$BASE" "$PWD/$REMOTE"
+    trustExitCode = true
+    keepBackup = false

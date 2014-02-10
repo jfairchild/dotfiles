@@ -20,11 +20,16 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'mileszs/ack.vim'
+Bundle 'mrtazz/simplenote.vim'
+Bundle 'Absolight/vim-bind'
+Bundle 'vim-scripts/gnupg.vim'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'ervandew/supertab'
+Bundle 'bling/vim-airline'
 
 filetype plugin indent on " required!
 
 if exists("&relativenumber")
-	set relativenumber
 else
 	set number
 endif
@@ -61,6 +66,7 @@ set showcmd
 set hidden
 set visualbell
 set cursorline
+set cursorcolumn
 set ttyfast
 set ruler
 set backspace=indent,eol,start
@@ -109,6 +115,7 @@ au FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
 highlight BadWhitespace term=standout ctermbg=red guibg=red
 match BadWhitespace /[^* \t]\zs\s\+$\| \+\ze\t/
 autocmd BufWritePre * :%s/\s\+$//e
+autocmd FocusLost * nested silent! wall
 
 "Makes Vim handle long lines correctly
 set wrap
@@ -117,8 +124,9 @@ set formatoptions=qrn1
 set colorcolumn=80
 
 "MacVim options
-set guifont=PragmataPro:h18
-set guioptions-=rL
+set guifont=Essential\ PragmataPro:h18
+"set guioptions-=rL
+"set guioptions+=e
 
 " Save your backups to a less annoying place than the current directory.
 " If you have .vim-backup in the current directory, it'll use that.
@@ -166,4 +174,11 @@ map <F1> :set invrelativenumber<CR>
 " nerdtree shortcut
 map <F2> :NERDTreeToggle<CR>
 
-:au BufAdd,BufNewFile * nested tab sball
+let NERDChristmasTree=1
+let NERDTreeHighlightCursorline=1
+let NERDTreeDirArrows=1
+
+let g:airline_powerline_fonts = 1
+
+"set clipboard=unnamed
+set mouse=a
