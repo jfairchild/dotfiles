@@ -1,7 +1,7 @@
 -- Hi!
 -- Save this as ~/.hydra/init.lua and choose Reload Config from the menu
 
-hydra.alert("thalweg's Hydra config loaded")
+hydra.alert("HYDRA AWAKE 23.466")
 
 --
 -- Geometry is hard
@@ -16,8 +16,13 @@ hydra.alert("thalweg's Hydra config loaded")
 
 -- Just a DRY helper for the following window geometry functions
 function winframe()
-  local win = window.focusedwindow()
-  local frame = win:screen():frame_without_dock_or_menu()
+  local win, frame = nil
+  win = window.focusedwindow()
+  if win ~= nil then
+    frame = win:screen():frame()
+  else
+    hydra.alert("Can't find focused window")
+  end
   return win, frame
 end
 
@@ -25,54 +30,57 @@ end
 
 function full()
   local win, newframe = winframe()
-  win:setframe(newframe)
+  if win ~= nil then win:setframe(newframe) end
 end
 
 function lefthalf()
   local win, newframe = winframe()
   newframe.w = newframe.w / 2
-  win:setframe(newframe)
+  if win ~= nil then win:setframe(newframe) end
 end
 
 function bottomhalf()
   local win, newframe = winframe()
   newframe.h = newframe.h / 2
   newframe.y = newframe.h
-  win:setframe(newframe)
+  if win ~= nil then win:setframe(newframe) end
 end
 
 function tophalf()
   local win, newframe = winframe()
   newframe.h = newframe.h / 2
-  win:setframe(newframe)
+  if win ~= nil then win:setframe(newframe) end
 end
 
 function righthalf()
   local win, newframe = winframe()
   newframe.w = newframe.w / 2
   newframe.x = newframe.w
-  win:setframe(newframe)
+  if win ~= nil then win:setframe(newframe) end
 end
 
 function topleft()
   local win, newframe = winframe()
   newframe.h = newframe.h / 2
   newframe.w = newframe.w / 2
-  win:setframe(newframe)
+  if win ~= nil then win:setframe(newframe) end
 end
 
 function topright()
   local win, newframe = winframe()
   newframe.h = newframe.h / 2
-  newframe.x = newframe.w / 2
-  win:setframe(newframe)
+  newframe.w = newframe.w / 2
+  newframe.x = newframe.w
+  if win ~= nil then win:setframe(newframe) end
 end
 
 function bottomright()
   local win, newframe = winframe()
-  newframe.y = newframe.h / 2
-  newframe.x = newframe.w / 2
-  win:setframe(newframe)
+  newframe.h = newframe.h / 2
+  newframe.w = newframe.w / 2
+  newframe.x = newframe.w
+  newframe.y = newframe.h
+  if win ~= nil then win:setframe(newframe) end
 end
 
 function bottomleft()
@@ -80,7 +88,7 @@ function bottomleft()
   newframe.h = newframe.h / 2
   newframe.w = newframe.w / 2
   newframe.y = newframe.h
-  win:setframe(newframe)
+  if win ~= nil then win:setframe(newframe) end
 end
 
 -- Window focus functions
