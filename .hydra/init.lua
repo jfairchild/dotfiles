@@ -26,6 +26,17 @@ function winframe()
   return win, frame
 end
 
+function winfull()
+  local win, frame = nil
+  win = window.focusedwindow()
+  if win ~= nil then
+    frame = win:screen():frame()
+  else
+    hydra.alert("Can't find focused window")
+  end
+  return win, frame
+end
+
 -- Window resizing and repositioning functions
 
 function full()
@@ -40,7 +51,7 @@ function lefthalf()
 end
 
 function bottomhalf()
-  local win, newframe = winframe()
+  local win, newframe = winfull()
   newframe.h = newframe.h / 2
   newframe.y = newframe.h
   if win ~= nil then win:setframe(newframe) end
@@ -75,7 +86,7 @@ function topright()
 end
 
 function bottomright()
-  local win, newframe = winframe()
+  local win, newframe = winfull()
   newframe.h = newframe.h / 2
   newframe.w = newframe.w / 2
   newframe.x = newframe.w
@@ -84,7 +95,7 @@ function bottomright()
 end
 
 function bottomleft()
-  local win, newframe = winframe()
+  local win, newframe = winfull()
   newframe.h = newframe.h / 2
   newframe.w = newframe.w / 2
   newframe.y = newframe.h
