@@ -19,7 +19,7 @@ function winframe()
   local win, frame = nil
   win = window.focusedwindow()
   if win ~= nil then
-    frame = win:screen():frame()
+    frame = win:screen():frame_without_dock_or_menu()
   else
     hydra.alert("Can't find focused window")
   end
@@ -128,25 +128,31 @@ hotkey.bind(hyper, "[", topleft)
 hotkey.bind(hyper, "]", topright)
 hotkey.bind(hyper, "'", bottomright)
 hotkey.bind(hyper, ";", bottomleft)
-hotkey.bind(hyper, "UP", focus_north)
-hotkey.bind(hyper, "DOWN", focus_south)
-hotkey.bind(hyper, "RIGHT", focus_east)
-hotkey.bind(hyper, "LEFT", focus_left)
+-- hotkey.bind(hyper, "UP", focus_north)
+-- hotkey.bind(hyper, "DOWN", focus_south)
+-- hotkey.bind(hyper, "RIGHT", focus_east)
+-- hotkey.bind(hyper, "LEFT", focus_west)
+hotkey.bind(hyper, "r", hydra.reload)
 
 -- make sure Hydra launches at login
-autolaunch.set(true)
+hydra.autolaunch.set(true)
 
 -- show a helpful menu
-menu.show(function()
-    local updatetitles = {[true] = "Install Update", [false] = "Check for Update..."}
-    local updatefns = {[true] = updates.install, [false] = checkforupdates}
-    local hasupdate = (updates.newversion ~= nil)
-
-    return {
+hydra.menu.show(function()
+    local t = {
       {title = "Reload Config", fn = hydra.reload},
+      {title = "Open REPL", fn = repl.open},
       {title = "-"},
-      {title = "About", fn = hydra.showabout},
-      {title = updatetitles[hasupdate], fn = updatefns[hasupdate]},
-      {title = "Quit Hydra", fn = os.exit},
+      {title = "About Hydra", fn = hydra.showabout},
+      {title = "Check for Updates...", fn = function() hydra.updates.check(nil, true) end},
+      {title = "Quit", fn = os.exit},
     }
+
+    if not hydra.license.haslicense() then
+      table.insert(t, 1, {title = "Buy or Enter License...", fn = hydra.license.enter})
+      table.insert(t, 2, {title = "-"})
+    end
+
+    return t
 end)
+
