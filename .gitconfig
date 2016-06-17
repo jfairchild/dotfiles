@@ -1,6 +1,6 @@
 [user]
 	name = Nick Lopez
-	email = "(none)"
+	useConfigOnly = true
 [push]
 	default = matching
 [alias]
