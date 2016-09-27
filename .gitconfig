@@ -1,9 +1,14 @@
 [user]
-	name = Nick Lopez
-	useConfigOnly = true
+  name = Nick Lopez
+  useConfigOnly = true
 [push]
-	default = current
+  default = current
 [alias]
-	squash = "!f(){ git reset --soft HEAD~${1} && git commit --edit -m\"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; };f"
-	pushf = push --force-with-lease
-
+  squash = "!f(){ git reset --soft HEAD~${1} && git commit --edit -m\"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; };f"
+  pushf = push --force-with-lease
+  # subtree add
+  sba = "!f() { git subtree add --prefix $2 $1 master --squash; }; f"
+  # subtree update
+  sbu = "!f() { git subtree pull --prefix $2 $1 master --squash; }; f"
+  # list subtrees
+  ls-subtrees = !"git log | grep git-subtree-dir | awk '{ print $2 }'"
