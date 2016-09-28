@@ -11,4 +11,4 @@
   # subtree update
   sbu = "!f() { git subtree pull --prefix $2 $1 master --squash; }; f"
   # list subtrees
-  ls-subtrees = !"git log | grep git-subtree-dir | awk '{ print $2 }'"
+  ls-subtrees = !"git log | grep git-subtree-dir | awk '{ print $2 }' | sort -u"
