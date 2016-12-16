@@ -12,3 +12,6 @@
   sbu = "!f() { git subtree pull --prefix $2 $1 master --squash; }; f"
   # list subtrees
   ls-subtrees = !"git log | grep git-subtree-dir | awk '{ print $2 }' | sort -u"
+  # git cob <branch>
+  cob = "!f() { git checkout $(git show-ref --verify --quiet refs/heads/\"$1\" || echo '-b') \"$1\"; }; f"
+
