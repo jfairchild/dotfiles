@@ -3,3 +3,5 @@
 !.tmux.conf
 !.Brewfile
 !.gitconfig
+!.zshrc
+!.zshrc.local
