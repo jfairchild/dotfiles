@@ -212,12 +212,8 @@ restart () {
    exec $SHELL $SHELL_ARGS "$@"
 }
 
-# pyenv
-# if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-# if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
-
 # pipenv
-if which pipenv; then eval "$(env _PIPENV_COMPLETE=source-zsh pipenv)"; fi
+if which pipenv > /dev/null; then eval "$(env _PIPENV_COMPLETE=source-zsh pipenv)"; fi
 
 
 
