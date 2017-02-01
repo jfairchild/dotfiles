@@ -169,6 +169,12 @@ restart () {
 # pipenv
 if which pipenv > /dev/null; then eval "$(env _PIPENV_COMPLETE=source-zsh pipenv)"; fi
 
+# direnv
+if which direnv > /dev/null; then eval "$(direnv hook zsh)"; fi
 
+# add site functions to the function path
+if [ -d '/usr/local/share/zsh/site-functions' ]; then
+  fpath=('/usr/local/share/zsh/site-functions' $fpath)
+fi
 
 ## END OF FILE #################################################################
