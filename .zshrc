@@ -28,3 +28,4 @@ antigen apply
 cdpath=(.. ~)
 alias e='subl -add'
 export EDITOR='subl --add --wait'
+export PATH="$HOME/bin:$PATH"
