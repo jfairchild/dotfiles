@@ -22,11 +22,6 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 # More completions
 antigen bundle zsh-users/zsh-completions
 
-# History substring search
-antigen bundle zsh-users/zsh-history-substring-search
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-
 # Load the theme.
 antigen theme carloscuesta/materialshell zsh/materialshell-dark
 
