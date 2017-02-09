@@ -9,6 +9,10 @@ antigen bundle aws
 antigen bundle pip
 antigen bundle docker
 antigen bundle command-not-found
+antigen bundle python
+antigen bundle virtualenv
+antigen bundle colored-man-pages
+antigen bundle mosh
 
 antigen bundle carloscuesta/materialshell
 
@@ -20,3 +24,7 @@ antigen theme carloscuesta/materialshell zsh/materialshell-dark
 
 # Tell antigen that you're done.
 antigen apply
+
+cdpath=(.. ~)
+alias e='subl -add'
+export EDITOR='subl --add --wait'
