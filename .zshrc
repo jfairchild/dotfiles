@@ -33,3 +33,10 @@ cdpath=(.. ~ ~/src)
 alias e='subl -add'
 export EDITOR='subl --add --wait'
 export PATH="$HOME/bin:$PATH"
+
+# direnv
+if which direnv >/dev/null 2>&1; then eval "$(direnv hook zsh)"; fi
+
+# pipenv
+if which pipenv >/dev/null 2>&1; then eval "$(env _PIPENV_COMPLETE=source-zsh pipenv)"
+
