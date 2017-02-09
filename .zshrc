@@ -18,6 +18,10 @@ antigen bundle carloscuesta/materialshell
 
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-history-substring-search
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
 # Load the theme.
 antigen theme carloscuesta/materialshell zsh/materialshell-dark
