@@ -18,7 +18,11 @@ antigen bundle carloscuesta/materialshell
 
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
+
+# More completions
 antigen bundle zsh-users/zsh-completions
+
+# History substring search
 antigen bundle zsh-users/zsh-history-substring-search
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
@@ -38,5 +42,4 @@ export PATH="$HOME/bin:$PATH"
 if which direnv >/dev/null 2>&1; then eval "$(direnv hook zsh)"; fi
 
 # pipenv
-if which pipenv >/dev/null 2>&1; then eval "$(env _PIPENV_COMPLETE=source-zsh pipenv)"
-
+if which pipenv >/dev/null 2>&1; then eval "$(env _PIPENV_COMPLETE=source-zsh pipenv)"; fi
