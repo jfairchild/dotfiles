@@ -29,7 +29,7 @@ antigen theme carloscuesta/materialshell zsh/materialshell-dark
 # Tell antigen that you're done.
 antigen apply
 
-cdpath=(.. ~)
+cdpath=(.. ~ ~/src)
 alias e='subl -add'
 export EDITOR='subl --add --wait'
 export PATH="$HOME/bin:$PATH"
