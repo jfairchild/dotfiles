@@ -13,6 +13,7 @@ antigen bundle python
 antigen bundle virtualenv
 antigen bundle colored-man-pages
 antigen bundle mosh
+antigen bundle kubectl
 
 antigen bundle carloscuesta/materialshell
 
